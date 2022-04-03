@@ -11,5 +11,8 @@ namespace BookMe.Core.DomainModels
         public int? RoomId { get; set; }
         public decimal? Amount { get; set; }
         public bool? IsActive { get; set; }
+        public int? RoomTypeId { get; set; }
+
+        public virtual RoomType RoomType { get; set; }
     }
 }

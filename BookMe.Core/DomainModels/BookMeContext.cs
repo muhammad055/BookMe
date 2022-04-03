@@ -28,13 +28,13 @@ namespace BookMe.Core.DomainModels
         public virtual DbSet<Rent> Rents { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomBooking> RoomBookings { get; set; }
+        public virtual DbSet<RoomType> RoomTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseSqlServer(""); // Add connstr here
+                optionsBuilder.UseSqlServer("");
             }
         }
 
@@ -150,6 +150,11 @@ namespace BookMe.Core.DomainModels
                 entity.ToTable("Rent");
 
                 entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
+
+                entity.HasOne(d => d.RoomType)
+                    .WithMany(p => p.Rents)
+                    .HasForeignKey(d => d.RoomTypeId)
+                    .HasConstraintName("FK_Rent_RoomType");
             });
 
             modelBuilder.Entity<Room>(entity =>
@@ -158,6 +163,11 @@ namespace BookMe.Core.DomainModels
                     .WithMany(p => p.Rooms)
                     .HasForeignKey(d => d.HotelId)
                     .HasConstraintName("FK_Rooms_Hotel");
+
+                entity.HasOne(d => d.RoomType)
+                    .WithMany(p => p.Rooms)
+                    .HasForeignKey(d => d.RoomTypeId)
+                    .HasConstraintName("FK_Rooms_RoomType");
             });
 
             modelBuilder.Entity<RoomBooking>(entity =>
@@ -175,6 +185,20 @@ namespace BookMe.Core.DomainModels
                     .WithMany(p => p.RoomBookings)
                     .HasForeignKey(d => d.RoomId)
                     .HasConstraintName("FK_RoomBooking_Rooms");
+            });
+
+            modelBuilder.Entity<RoomType>(entity =>
+            {
+                entity.ToTable("RoomType");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Type).HasMaxLength(150);
+
+                entity.HasOne(d => d.Hotel)
+                    .WithMany(p => p.RoomTypes)
+                    .HasForeignKey(d => d.HotelId)
+                    .HasConstraintName("FK_RoomType_Hotel");
             });
 
             OnModelCreatingPartial(modelBuilder);

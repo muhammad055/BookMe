@@ -12,6 +12,7 @@ namespace BookMe.Core.DomainModels
             HotelFacilities = new HashSet<HotelFacility>();
             InverseParent = new HashSet<Hotel>();
             Ratings = new HashSet<Rating>();
+            RoomTypes = new HashSet<RoomType>();
             Rooms = new HashSet<Room>();
         }
 
@@ -26,6 +27,7 @@ namespace BookMe.Core.DomainModels
         public virtual ICollection<HotelFacility> HotelFacilities { get; set; }
         public virtual ICollection<Hotel> InverseParent { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<RoomType> RoomTypes { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }

@@ -19,8 +19,10 @@ namespace BookMe.Core.DomainModels
         public int? People { get; set; }
         public int? Rating { get; set; }
         public bool? IsAvailable { get; set; }
+        public int? RoomTypeId { get; set; }
 
         public virtual Hotel Hotel { get; set; }
+        public virtual RoomType RoomType { get; set; }
         public virtual ICollection<RoomBooking> RoomBookings { get; set; }
     }
 }
