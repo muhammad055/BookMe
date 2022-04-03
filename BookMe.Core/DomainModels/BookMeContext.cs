@@ -29,6 +29,7 @@ namespace BookMe.Core.DomainModels
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomBooking> RoomBookings { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
+        public virtual DbSet<AvailableRooms> AvailableRooms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -200,6 +201,8 @@ namespace BookMe.Core.DomainModels
                     .HasForeignKey(d => d.HotelId)
                     .HasConstraintName("FK_RoomType_Hotel");
             });
+            modelBuilder.Entity<AvailableRooms>()
+            .ToView(nameof(AvailableRooms)).HasNoKey();
 
             OnModelCreatingPartial(modelBuilder);
         }

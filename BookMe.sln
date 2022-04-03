@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.API", "BookMe\BookMe.API.csproj", "{597EAB04-104A-4FEB-9D10-796CCF866DFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMe.Application", "BookMe.Application\BookMe.Application.csproj", "{5A0567DC-D3C6-48B9-95C6-C09E25F4AB93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.Application", "BookMe.Application\BookMe.Application.csproj", "{5A0567DC-D3C6-48B9-95C6-C09E25F4AB93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMe.Core", "BookMe.Core\BookMe.Core.csproj", "{1374E55C-B1B5-444C-8E2F-1C7D8180933C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.Core", "BookMe.Core\BookMe.Core.csproj", "{1374E55C-B1B5-444C-8E2F-1C7D8180933C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMe.Tests", "BookMe.Tests\BookMe.Tests.csproj", "{793E6017-70E3-4442-892A-1C301897AAB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.Tests", "BookMe.Tests\BookMe.Tests.csproj", "{793E6017-70E3-4442-892A-1C301897AAB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMe.Contract", "BookMe.Contract\BookMe.Contract.csproj", "{A77CB472-8D60-4918-8497-EE3C8520D755}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{793E6017-70E3-4442-892A-1C301897AAB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{793E6017-70E3-4442-892A-1C301897AAB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{793E6017-70E3-4442-892A-1C301897AAB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A77CB472-8D60-4918-8497-EE3C8520D755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A77CB472-8D60-4918-8497-EE3C8520D755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A77CB472-8D60-4918-8497-EE3C8520D755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A77CB472-8D60-4918-8497-EE3C8520D755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

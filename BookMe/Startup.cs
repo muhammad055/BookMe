@@ -1,3 +1,5 @@
+using BookMe.API.Extensions;
+using BookMe.Application.MappingProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +28,7 @@ namespace BookMe
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(HotelReqResProfile));
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -36,6 +38,8 @@ namespace BookMe
                     Description = "Backend for BookMe application for booking hotels.",
                 });
             });
+            services.AddAppServices();
+            services.ConfigureDataBase(Configuration.GetConnectionString("BookMeConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
