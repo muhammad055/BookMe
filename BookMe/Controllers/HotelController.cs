@@ -23,7 +23,7 @@ namespace BookMe.API.Controllers
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        [HttpGet("GetHotelByName")]
+        [HttpGet("[Action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -37,13 +37,22 @@ namespace BookMe.API.Controllers
         /// </summary>
         /// <param name="availableRoomsRequestDto"></param>
         /// <returns></returns>
-        [HttpGet("GetAvailableRooms")]
+        [HttpGet("[Action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<List<AvailableRoomsDto>> GetAvailableRooms([FromQuery] AvailableRoomsRequestDto availableRoomsRequestDto)
         {
             return await _hotelService.GetAvailableRooms(availableRoomsRequestDto);
+        }
+
+        [HttpPost("[Action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<int> MakeBooking([FromBody] BookingRequestDto bookingRequestDto)
+        {
+            return await _hotelService.MakeBooking(bookingRequestDto);
         }
     }
 }

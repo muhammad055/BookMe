@@ -12,5 +12,6 @@ namespace BookMe.Core.Interfaces
         Task<List<Hotel>> GetHotelsByName(string Name);
         Task<Hotel> GetHotelsById(int Id);
         Task<List<AvailableRooms>> GetAvailableRooms(AvailableRoomsRequestDto availableRoomsRequestDto);
+        Task<int> MakeBooking(BookingRequestDto bookingRequestDto);
     }
 }

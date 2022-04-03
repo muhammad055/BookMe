@@ -49,7 +49,26 @@ namespace BookMe.Core.DomainServices
             
             return await res.ToListAsync();
         }
-
+        public async Task<int> MakeBooking(BookingRequestDto bookingRequestDto)
+        {
+            var booking = new Booking();
+            booking.CheckOutDate = bookingRequestDto.CheckOutDate;  
+            booking.CheckInDate = bookingRequestDto.CheckInDate;
+            booking.CustomerId = bookingRequestDto.CustomerId;
+            booking.BookerId = bookingRequestDto.BookerId;
+            await _bookMeContext.Set<Booking>().AddAsync(booking);
+            await _bookMeContext.SaveChangesAsync();
+            foreach (var item in bookingRequestDto.RoomRent)
+            {
+                var roomBooking = new RoomBooking();
+                roomBooking.Amount = item.Amount;   
+                roomBooking.RoomId = item.RoomId;
+                roomBooking.BookingId = booking.Id;
+                _bookMeContext.Set<RoomBooking>().AddAsync(roomBooking);
+            }
+            await _bookMeContext.SaveChangesAsync();
+            return booking.Id;
+        }
 
     }
 }

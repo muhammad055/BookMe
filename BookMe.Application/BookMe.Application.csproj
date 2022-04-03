@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BookMe.Core\BookMe.Core.csproj" />
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
 
   </ItemGroup>
 
